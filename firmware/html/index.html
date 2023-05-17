@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="toggles.css" />
+        <script src="jquery.min.js"></script>
+        <script src="jquery.serializejson.js"></script>
+        <script src="main.js"></script>
+
+        <title>Raiju // settings</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="nav">
+                <a class="active" href="index.html">Settings</a>
+                <a href="calibration.html">Calibration</a>
+                <a href="update.html">Update</a>
+                <a class="version">raiju 1.0.0</a>
+            </div>
+        </div>
+        <div class="container">
+            <form method="post" id="data-form" action="./configuration.json">
+                <div id="panel-settings">
+                    <div class="section-title">
+                        <h3>general</h3>
+                        <button
+                            type="button"
+                            class="button-hover info"
+                            id="panel"
+                            onclick="showInfo(this.id)"
+                        >
+                            ?
+                        </button>
+                    </div>
+                    <div class="infobox hide" id="info-panel">
+                        unit id: assign a different id to the module, useful for
+                        setups with multiple raijus, currently limited to two
+                        units.
+                        <br />
+                        default page: which sliders parameter page should be
+                        shown by default at boot.
+                        <br />
+                        led intensity: maximum brightness for the leds.
+                    </div>
+                    <ul class="toggle-section-container">
+                        <li class="toggle-switch-container">
+                            <p class="label">unit id</p>
+                            <div class="toggle-switch switch-vertical">
+                                <input
+                                    id="toggle-a0"
+                                    type="radio"
+                                    name="id"
+                                    data-type="toggle"
+                                    data-value-type="boolean"
+                                    value="false"
+                                    checked
+                                />
+                                <label for="toggle-a0">1</label>
+                                <input
+                                    id="toggle-b0"
+                                    type="radio"
+                                    name="id"
+                                    data-type="toggle"
+                                    data-value-type="boolean"
+                                    value="true"
+                                />
+                                <label for="toggle-b0">2</label>
+                                <span class="toggle-outside">
+                                    <span class="toggle-inside"></span>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="toggle-switch-container">
+                            <p class="label">default page</p>
+                            <div class="toggle-switch switch-vertical">
+                                <input
+                                    id="toggle-a0"
+                                    type="radio"
+                                    name="default_page"
+                                    data-type="toggle"
+                                    data-value-type="boolean"
+                                    value="false"
+                                    checked
+                                />
+                                <label for="toggle-a0">Envelope</label>
+                                <input
+                                    id="toggle-b0"
+                                    type="radio"
+                                    name="default_page"
+                                    data-type="toggle"
+                                    data-value-type="boolean"
+                                    value="true"
+                                />
+                                <label for="toggle-b0">Oscillator</label>
+                                <span class="toggle-outside">
+                                    <span class="toggle-inside"></span>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="toggle-switch-container">
+                            <p class="label">led intensity</p>
+                            <div class="slider">
+                                <input
+                                    type="range"
+                                    name="led_brightness"
+                                    min="0"
+                                    max="100"
+                                    oninput="brightness.value=value +'%'"
+                                />
+                                <output id="brightness" class="range-value"
+                                    >50%</output
+                                >
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="separator"></div>
+                <div id="panel-settings">
+                    <div class="section-title">
+                        <h3>voice</h3>
+                        <button
+                            type="button"
+                            class="button-hover info"
+                            id="voice"
+                            onclick="showInfo(this.id)"
+                        >
+                            ?
+                        </button>
+                    </div>
+                    <div class="infobox hide" id="info-voice">
+                        modulator: modulation oscillator waveform.
+                        <br />mod ratio: modulation oscillator frequency
+                        multiplier, based on the Carrier oscillator frequency
+                    </div>
+                    <ul class="toggle-section-container">
+                        <li class="toggle-switch-container">
+                            <p class="label">modulator</p>
+                            <div class="toggle-switch switch-vertical">
+                                <input
+                                    id="toggle-a0"
+                                    type="radio"
+                                    name="mod_shape"
+                                    data-type="toggle"
+                                    data-value-type="boolean"
+                                    value="false"
+                                    checked
+                                />
+                                <label for="toggle-a0">Noise</label>
+                                <input
+                                    id="toggle-b0"
+                                    type="radio"
+                                    name="mod_shape"
+                                    data-type="toggle"
+                                    data-value-type="boolean"
+                                    value="true"
+                                />
+                                <label for="toggle-b0">Sine</label>
+                                <span class="toggle-outside">
+                                    <span class="toggle-inside"></span>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="toggle-switch-container">
+                            <p class="label">mod ratio</p>
+                            <div class="slider">
+                                <input
+                                    type="range"
+                                    name="mod_ratio"
+                                    min="1.0"
+                                    max="7.0"
+                                    oninput="modratio.value='*' + value"
+                                />
+                                <output id="modratio" class="range-value"
+                                    >*1</output
+                                >
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="separator"></div>
+                <div id="panel-settings">
+                    <div class="section-title">
+                        <h3>pitch envelope</h3>
+                        <button
+                            type="button"
+                            class="button-hover info"
+                            id="pitch"
+                            onclick="showInfo(this.id)"
+                        >
+                            ?
+                        </button>
+                    </div>
+                    <div class="infobox hide" id="info-pitch">
+                        pitch: pitch envelope's frequency modulation amount,
+                        expressed in semitones.
+                        <br />decay length: the pitch envelope's decay is
+                        obtained by multiplying this value with the main
+                        envelope decay length.
+                    </div>
+                    <ul class="toggle-section-container">
+                        <li class="toggle-switch-container">
+                            <p class="label">pitch</p>
+                            <div class="slider">
+                                <input
+                                    type="range"
+                                    name="penv_semitones"
+                                    min="1"
+                                    max="48"
+                                    step="1"
+                                    oninput="semitones.value= value + 'st'"
+                                />
+                                <output id="semitones" class="range-value"
+                                    >0.75st</output
+                                >
+                            </div>
+                        </li>
+                        <li class="toggle-switch-container">
+                            <p class="label">decay length</p>
+                            <div class="slider">
+                                <input
+                                    type="range"
+                                    name="penv_decay"
+                                    min="0.25"
+                                    max="10.0"
+                                    step="0.25"
+                                    oninput="decay.value= '*' + value"
+                                />
+                                <output id="decay" class="range-value"
+                                    >*0.75</output
+                                >
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="separator"></div>
+                <div id="cv">
+                    <div class="section-title">
+                        <h3>cv in routing</h3>
+                        <button
+                            type="button"
+                            class="button-hover info"
+                            id="cvrouting"
+                            onclick="showInfo(this.id)"
+                        >
+                            ?
+                        </button>
+                    </div>
+                    <div class="infobox hide" id="info-cvrouting">
+                        Individual toggles to route each CV input to either
+                        envelope or synth function
+                    </div>
+
+                    <ul class="toggle-section-container">
+                        <li class="toggle-switch-container">
+                            <div class="toggle-switch switch-vertical">
+                                <input
+                                    id="toggle-a"
+                                    type="radio"
+                                    name="cv_routing[0]"
+                                    data-type="toggle"
+                                    data-value-type="boolean"
+                                    value="false"
+                                    checked
+                                />
+                                <label for="toggle-a">Attack</label>
+                                <input
+                                    id="toggle-b"
+                                    type="radio"
+                                    name="cv_routing[0]"
+                                    data-type="toggle"
+                                    data-value-type="boolean"
+                                    value="true"
+                                />
+                                <label for="toggle-b">Wave</label>
+                                <span class="toggle-outside">
+                                    <span class="toggle-inside"></span>
+                                </span>
+                            </div>
+                        </li>
+
+                        <li class="toggle-switch-container">
+                            <div class="toggle-switch switch-vertical">
+                                <input
+                                    id="toggle-c"
+                                    type="radio"
+                                    name="cv_routing[1]"
+                                    data-type="toggle"
+                                    data-value-type="boolean"
+                                    value="false"
+                                    checked
+                                />
+                                <label for="toggle-c">Decay</label>
+                                <input
+                                    id="toggle-d"
+                                    type="radio"
+                                    name="cv_routing[1]"
+                                    data-type="toggle"
+                                    data-value-type="boolean"
+                                    value="true"
+                                />
+                                <label for="toggle-d">Color</label>
+                                <span class="toggle-outside">
+                                    <span class="toggle-inside"></span>
+                                </span>
+                            </div>
+                        </li>
+
+                        <li class="toggle-switch-container">
+                            <div class="toggle-switch switch-vertical">
+                                <input
+                                    id="toggle-e"
+                                    type="radio"
+                                    name="cv_routing[2]"
+                                    data-type="toggle"
+                                    data-value-type="boolean"
+                                    value="false"
+                                    checked
+                                />
+                                <label for="toggle-e">Sustain</label>
+                                <input
+                                    id="toggle-f"
+                                    type="radio"
+                                    name="cv_routing[2]"
+                                    data-type="toggle"
+                                    data-value-type="boolean"
+                                    value="true"
+                                />
+                                <label for="toggle-f">Frequency</label>
+                                <span class="toggle-outside">
+                                    <span class="toggle-inside"></span>
+                                </span>
+                            </div>
+                        </li>
+
+                        <li class="toggle-switch-container">
+                            <div class="toggle-switch switch-vertical">
+                                <input
+                                    id="toggle-g"
+                                    type="radio"
+                                    name="cv_routing[3]"
+                                    data-type="toggle"
+                                    data-value-type="boolean"
+                                    value="false"
+                                    checked
+                                />
+                                <label for="toggle-g">Release</label>
+                                <input
+                                    id="toggle-h"
+                                    type="radio"
+                                    name="cv_routing[3]"
+                                    data-type="toggle"
+                                    data-value-type="boolean"
+                                    value="true"
+                                />
+                                <label for="toggle-h">Pitch env</label>
+                                <span class="toggle-outside">
+                                    <span class="toggle-inside"></span>
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="separator"></div>
+                <div id="wifi-settings">
+                    <div class="section-title">
+                        <h3>wifi details</h3>
+                        <button
+                            type="button"
+                            class="button-hover info"
+                            id="wifi"
+                            onclick="showInfo(this.id)"
+                        >
+                            show
+                        </button>
+                    </div>
+                    <div class="infobox hide" id="info-wifi">
+                        <div class="field-group">
+                            <label class="label">ssid</label>
+                            <input
+                                name="ssid"
+                                type="text"
+                                size="32"
+                                placeholder="leave empty for AP Mode"
+                            />
+                        </div>
+                        <div class="field-group">
+                            <label class="label">password</label>
+                            <input name="password" type="text" size="32" />
+                        </div>
+                        <div class="field-group">
+                            <label class="label">ip (empty for auto)</label>
+                            <input
+                                name="ip"
+                                type="text"
+                                size="32"
+                                minlength="7"
+                                maxlength="15"
+                                placeholder="xxx.xxx.x.xxx"
+                                pattern="^((\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.){3}(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])$"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="separator"></div>
+                <div class="button-container">
+                    <button type="submit" class="button-std button-hover">
+                        Save
+                    </button>
+                    <h2 id="status"></h2>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

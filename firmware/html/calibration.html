@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="toggles.css" />
+        <script src="jquery.min.js"></script>
+        <script src="jquery.serializejson.js"></script>
+        <script src="main.js"></script>
+
+        <title>Raiju // settings</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="nav">
+                <a href="index.html">Settings</a>
+                <a class="active" href="calibration.html">Calibration</a>
+                <a href="update.html">Update</a>
+                <a class="version">raiju 1.0.0</a>
+            </div>
+        </div>
+
+        <div class="container">
+            <div id="backup">
+                <div class="section-title">
+                    <h3>backup/restore</h3>
+                </div>
+                <div class="info">
+                    IMPORTANT: Make sure to backup your data before updating the
+                    firmware, to avoid the loss of calibration data. When
+                    restoring a back up, do not press save as it will be
+                    restored automatically.
+                </div>
+                <div id="cali-backup">
+                    <ul class="toggle-section-container">
+                        <li class="toggle-switch-container">
+                            <p class="label">backup</p>
+                            <input
+                                type="button"
+                                id="calibration-download"
+                                value="Download Calibration"
+                            />
+                        </li>
+                        <li class="toggle-switch-container">
+                            <p class="label">restore</p>
+                            <form action="./calibration.json">
+                                <input
+                                    type="file"
+                                    id="upload-data"
+                                    accept=".json"
+                                />
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <form
+                method="post"
+                action="./calibration.json"
+                id="data-form"
+                class="calibration-form"
+            >
+                <div id="calibration-settings">
+                    <div class="section-title">
+                        <h3>v/oct calibration</h3>
+                        <button
+                            type="button"
+                            class="button-hover info"
+                            id="calibration"
+                            onclick="showInfo(this.id)"
+                        >
+                            ?
+                        </button>
+                    </div>
+                    <div class="infobox hide" id="info-calibration">
+                        use this function to calibrate the CV tracking, patch a
+                        known v/oct voltage into the sustain/freq input and use
+                        the reading below to adjust the calibration values.
+                    </div>
+
+                    <ul class="calibration-section-container">
+                        <li class="calibration-container">
+                            <p class="label">-3V</p>
+                            <input
+                                type="number"
+                                name="calibration[0]"
+                                min="0"
+                                max="4095"
+                                value="1"
+                            />
+                        </li>
+                        <li class="calibration-container">
+                            <p class="label">0V</p>
+                            <input
+                                type="number"
+                                name="calibration[1]"
+                                min="0"
+                                max="4095"
+                                value="1"
+                            />
+                        </li>
+                        <li class="calibration-container">
+                            <p class="label">+3V</p>
+                            <input
+                                type="number"
+                                name="calibration[2]"
+                                min="0"
+                                max="4095"
+                                value="1"
+                            />
+                        </li>
+                        <li class="calibration-container">
+                            <p class="label">+5V</p>
+                            <input
+                                type="number"
+                                name="calibration[3]"
+                                min="0"
+                                max="4095"
+                                value="1"
+                            />
+                        </li>
+                    </ul>
+
+                    <ul class="calibration-section-container small">
+                        <li class="toggle-switch-container">
+                            <p class="label">1V/Oct reading</p>
+                            <p class="value" id="analog-value">0</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="button-container">
+                    <button type="submit" class="button-std button-hover">
+                        Save
+                    </button>
+                    <h2 id="status"></h2>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,327 @@
+:root {
+    --yellow: #e4c842;
+    --white: #fff;
+    --bg: #212121;
+    --grey: #979797;
+    --midgrey: #636363;
+    --darkgrey: #111111;
+}
+
+body {
+    background-color: var(--bg);
+    font-family: 'Helvetica', sans-serif;
+    color: var(--grey);
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0 auto;
+    max-width: 1400px;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 2vw;
+}
+
+li {
+    flex: 1 1 21%;
+    text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+    li {
+        flex-basis: 48%;
+    } /* forces two items to a line */
+    #panel-settings li {
+        flex-basis: 100%;
+    }
+    #calibration-settings li {
+        flex-basis: 30%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    li {
+        flex-basis: 100%;
+    } /* forces one item per line line */
+}
+
+.container {
+    padding-bottom: 10px;
+}
+
+.nav {
+    background-color: var(--darkgrey);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.nav a {
+    float: left;
+    font-size: 18px;
+    font-style: italic;
+    letter-spacing: 4px;
+    color: var(--grey);
+    text-align: center;
+    padding: 8px 4vw;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    background-color: var(--grey);
+    border-radius: 6px;
+    color: var(--bg);
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+.nav a.active {
+    background-color: var(--yellow);
+    border-radius: 6px;
+    border-bottom: 2px solid var(--bg);
+    color: var(--darkgrey);
+}
+
+.nav a.version {
+    font-size: 10px;
+    float: right;
+    color: var(--midgrey);
+    pointer-events: none;
+    padding: 8px 2vw;
+}
+
+.section-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10vh;
+    font-size: 25px;
+    text-align: center;
+    font-style: italic;
+    letter-spacing: 4px;
+    color: var(--yellow);
+}
+
+button {
+    background: var(--darkgrey);
+    background-size: 400% 100%;
+    border: 1px solid var(--yellow);
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 25px;
+    line-height: 2;
+    margin: 2vw 1vw;
+    padding: 1px 2vw;
+    text-decoration: none;
+    vertical-align: baseline;
+    white-space: nowrap;
+    background-position: left;
+    transition: background-position 0.2s linear;
+}
+
+.button-hover:hover {
+    color: var(--white);
+    background: var(--grey);
+    transition: background 0.2s linear;
+}
+
+.info {
+    align-self: center;
+    font-style: normal;
+    margin-left: 1vw;
+    padding: 0 10px;
+    font-size: small;
+}
+
+.infobox {
+    visibility: visible;
+    text-align: center;
+    background-color: var(--darkgrey);
+    color: var(--grey);
+    border-radius: 6px;
+    padding: 2vw;
+    margin: 0 1vw;
+    max-height: 300px;
+    transition: visibility 0.3s, opacity 0.3s, padding 0.3s,
+        max-height 0.4s linear;
+}
+
+.hide {
+    visibility: hidden;
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+    transition: max-height 0.3s, opacity 0.2s, padding 0.4s,
+        visibility 0.2s linear;
+}
+
+.open {
+    background: var(--yellow);
+    color: var(--darkgrey);
+    transition: background, color 0.3s linear;
+}
+
+*,
+:before,
+:after {
+    box-sizing: border-box;
+}
+
+.calibration-section-container {
+    padding: 0;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    gap: 2vw;
+}
+
+.button-calibration {
+    border-radius: 12px;
+    padding: 5px 5px;
+    font-size: 20px;
+}
+
+.label {
+    font-size: 18px;
+    margin: 5px 5px 10px 5px;
+    text-align: center;
+    font-style: italic;
+    letter-spacing: 4px;
+    color: var(--yellow);
+}
+
+.slider {
+    display: flex;
+    width: 100%;
+    padding: 1vw;
+}
+
+input[type='range'] {
+    flex: 2 1 80%;
+    -webkit-appearance: none; /*Needed to reset default slider styles */
+    width: 100%;
+    height: 18px;
+    background-color: var(--grey);
+    border-radius: 6px;
+    margin: auto;
+    transition: all 0.2s ease;
+}
+
+input[type='range']:hover {
+    background-color: var(--midgrey);
+}
+input[type='range']:active {
+    background-color: var(--yellow);
+}
+
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none; /*Needed to reset default slider styles */
+    height: 26px;
+    width: 26px;
+    border-radius: 6px;
+    background: var(--bg);
+}
+
+input[type='range']::-moz-range-thumb {
+    height: 26px;
+    width: 26px;
+    border-radius: 6px;
+    background: var(--bg);
+}
+
+.range-value {
+    flex: 1 2 15%;
+    text-align: right;
+    font-size: 18px;
+    margin: auto;
+    width: 100%;
+    color: var(--yellow);
+}
+
+.separator {
+    margin: 1vw 10vw;
+    height: 4px;
+    background: repeating-linear-gradient(
+        to right,
+        var(--darkgrey) 0,
+        var(--darkgrey) 0.3vw,
+        transparent 0.3vw,
+        transparent 1.7vw
+    );
+}
+
+.button-container {
+    display: flex;
+    margin: 1px 0 0;
+    padding: 10px 0;
+}
+
+#status {
+    color: var(--yellow);
+    font-style: italic;
+    font-size: 14px;
+    letter-spacing: 4px;
+    padding: 0 3vw;
+}
+
+.field-group {
+    box-sizing: border-box;
+    clear: both;
+    padding: 4px 0;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+}
+
+form .field-group > label {
+    display: block;
+    position: relative;
+    word-wrap: break-word;
+}
+
+input[type='text'],
+[type='password'] {
+    background: #fff;
+    border: 2px solid #d0d0d0;
+    border-radius: 6px;
+    box-sizing: border-box;
+    color: var(--darkgrey);
+    font-family: inherit;
+    font-size: inherit;
+    height: 2.14285714em;
+    line-height: 1.4285714285714;
+    padding: 4px 5px;
+    margin: 0;
+    width: 100%;
+}
+
+input[type='text']:focus,
+[type='password']:focus {
+    border-color: var(--yellow);
+    outline-color: var(--yellow);
+}
+
+input[type='number'] {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.small {
+    padding: 3vw 30%;
+}
+
+.value {
+    font-size: 18px;
+    text-align: center;
+    font-style: italic;
+    letter-spacing: 4px;
+    color: #fff;
+}

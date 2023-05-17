@@ -1,0 +1,9 @@
+# https://github.com/DudeNr33/pyinstaller-versionfile
+# create-version-file windows-metadata.yaml --outfile windows-version-info.txt
+Version: 0.1.0
+CompanyName: Unknown Devices
+FileDescription: Raiju-tools
+InternalName: Raiju-tools
+LegalCopyright: © Marcel Stör. All rights reserved.
+OriginalFilename: Raiju-tools.exe
+ProductName: Raiju-tools

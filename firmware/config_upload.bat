@@ -1,0 +1,2 @@
+c:\users\ceste\.platformio\packages\tool-mkspiffs\mkspiffs_espressif32_arduino.exe -c config -p 256 -b 4096 -s 131072 .pio\build\release\config.bin
+python C:\Users\ceste\.platformio\packages\tool-esptoolpy\esptool.py --chip esp32 --port COM12 --baud 460800 --before default_reset --after hard_reset write_flash -z --flash_mode dio --flash_size detect 3866624 .pio\build\release\config.bin

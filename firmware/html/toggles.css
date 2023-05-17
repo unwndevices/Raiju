@@ -1,0 +1,110 @@
+.toggle-section-container {
+    text-align: center;
+    padding: 0;
+}
+
+.toggle-switch-container {
+    display: inline-block;
+    align-content: center;
+    background-color: var(--darkgrey);
+    padding: 2vw;
+    border-radius: 6px;
+}
+
+.toggle-switch {
+    margin: 0;
+    width: 10px;
+    position: relative;
+}
+
+.toggle-switch input {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.toggle-switch input:checked {
+    z-index: 1;
+}
+
+.toggle-switch input:checked + label {
+    opacity: 1;
+    cursor: default;
+}
+
+.toggle-switch input:not(:checked) + label:hover {
+    opacity: 0.5;
+}
+
+.toggle-switch label {
+    color: #fff;
+    opacity: 0.33;
+    cursor: pointer;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.toggle-switch .toggle-outside {
+    height: 100%;
+    border-radius: 6px;
+    padding: 11px;
+    overflow: hidden;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.toggle-switch .toggle-inside {
+    border-radius: 6px;
+    background: var(--bg);
+    position: absolute;
+    transition: all 0.2s ease-in-out;
+}
+
+.switch-vertical {
+    background-color: #00f;
+    width: 0;
+    height: 60px;
+    margin-left: 34px;
+}
+
+.switch-vertical input {
+    height: 100%;
+    width: 60px;
+    right: 0;
+    margin: 0;
+}
+
+.switch-vertical label {
+    font-size: 15px;
+    line-height: 30px;
+    display: block;
+    width: 80px;
+    height: 50%;
+    margin: 0;
+    text-align: left;
+    padding-left: 12px;
+}
+
+.switch-vertical .toggle-outside {
+    background: var(--grey);
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    right: 0;
+    top: 0;
+}
+
+.switch-vertical .toggle-inside {
+    height: 24px;
+    left: 3px;
+    top: 3px;
+    width: 24px;
+}
+
+.switch-vertical input:checked ~ .toggle-outside .toggle-inside {
+    top: 3px;
+}
+
+.switch-vertical input ~ input:checked ~ .toggle-outside .toggle-inside {
+    top: 33px;
+}

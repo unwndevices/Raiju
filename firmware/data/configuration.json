@@ -1,0 +1,15 @@
+{
+    "id": false,
+    "version": 52,
+    "default_page": false,
+    "led_brightness": 100,
+    "cv_routing": [false, false, false, false],
+    "stage_out": 0,
+    "mod_shape": false,
+    "mod_ratio": 5,
+    "penv_semitones": 12,
+    "penv_decay": 0.5,
+    "ssid": "",
+    "password": "",
+    "ip": ""
+}

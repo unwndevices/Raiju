@@ -1,0 +1,55 @@
+Software:
+
+  Bugfixes:
+    ☐ Configuration not getting saved
+    ☐ Gate freezing
+  Improvements:
+    ☐ Faster trigger detection
+    ✔ Envelope offset
+  Configuration:
+    ✔ wifi mode recognition 
+    ✔ debug Cv routing
+    ✔ default mode loading 
+    ✔ cv in calibration
+    ✔ loadConfig task
+    ✔ p.env settings
+  Engine:
+    ✔ Mod select
+    ✔ Range select
+  Misc:
+    ✔ Fix mode selection
+    ☐ Test Dac range
+    ☐ Led Animations (queues?)
+    ☐ Led initialization
+    ☐ Fix double shifting
+    ☐ real OTA
+
+  Features:
+    ✔ Trig out @6h @critical 
+    ☐ i2c @beta
+    ☐ Slider Freq Quantization 
+    ☐ CV Freq Quantization 
+
+Hardware:
+  Parts:
+    ✔ Remove DMux pullup
+    ✔ Fix s8050 footprint
+    ✔ Flag .1% resistors
+    ✔ Gain resistor value
+    ✔ Select parts for 0.7V offset max
+  Layout:
+    ✔ Improve power separation
+    ✔ Add Mounting holes keep-out
+  Test:
+    ✔ Test reaction values
+    ✔ Test 10 Ohm resistor
+    ☐ Test power consumption
+  Improvements:
+    ✔ Evaluate hardware env offset
+  Manifacturing:
+    ✔ Better tht/smd separation
+    ✔ Larger pot pads
+    ✔ Bigger vactrol clearance
+  Panel:
+    ☐ Investigate slider cutouts
+    ☐ Slightly wider buttons and pots cutouts
