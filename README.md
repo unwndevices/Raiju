@@ -1,7 +1,10 @@
 ## Unknown Devices Raijū - Eurorack module
-[Download the latest firmware](https://github.com/ "Download the latest firmware here")
-[Download the manual](https://github.com/ "Download the latest manual")
+[Download the latest firmware](https://github.com/unwndevices/Raiju/releases "Download the latest firmware here")
+
+[Download the manual](https://github.com/unwndevices/Raiju/tree/main/manual "Download the latest manual")
+
 Hardware and Firmware repository for Raijū, an 8HP module for the eurorack ecosystem by Unknown Devices.
+
 [Raijū is available for purchase here](https://unwn.dev/shop/modules/synth-voices/raiju/ "Raijū is available for purchase here")
 
 ### Specs:
@@ -17,5 +20,3 @@ Hardware and Firmware repository for Raijū, an 8HP module for the eurorack ecos
  - personalize the module behaviour to fit your playstyle
  - load, save and backup presets
  - Update the firmware without the need of a computer.
-
-[Download the latest firmware here](https://github.com/ "Download the latest firmware here")
